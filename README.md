@@ -117,3 +117,5 @@ yarn serve
 ```
 
 Para visualizá-lo, abra o navegador e digite: `localhost:8080`. A numeração da porta pode variar dependendo da sua rede.
+
+Após concluir a atividade, envie apenas o arquivo Clima.vue para o formulário disponibilizado pela equipe.
