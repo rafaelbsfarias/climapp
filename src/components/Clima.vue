@@ -32,7 +32,6 @@
 
 <script>
 const API_KEY = "aa8dc9bdb14443a987921219230306";
-const API_URL = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&lang=pt`;
 
 export default {
   name: "ClimaApp",
@@ -49,9 +48,17 @@ export default {
         return;
       }
 
-      // Adicionar a chamada da API weatherapi.com
-      // Armazenar o resultado em climaData
-      console.log(API_KEY, API_URL);
+      const formatarLocalizacao = this.localizacao
+        .trim()
+        .replace(/\s+/g, "+")
+        .toLowerCase();
+
+      const API_URL = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&lang=pt&q=${formatarLocalizacao}`;
+
+        // Adicionar a chamada da API weatherapi.com
+        // Armazenar o resultado em climaData
+
+      console.log(API_URL);
     },
   },
 };
