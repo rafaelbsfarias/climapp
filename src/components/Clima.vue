@@ -31,7 +31,7 @@
 </template>
 
 <script>
-const API_KEY = "aa8dc9bdb14443a987921219230306";
+const API_KEY = "b40d59c37e514605abb175741231306";
 
 export default {
   name: "ClimaApp",

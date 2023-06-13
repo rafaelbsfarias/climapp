@@ -119,3 +119,11 @@ yarn serve
 Para visualizá-lo, abra o navegador e digite: `localhost:8080`. A numeração da porta pode variar dependendo da sua rede.
 
 Após concluir a atividade, envie apenas o arquivo Clima.vue para o formulário disponibilizado pela equipe.
+
+## Formulário de Submissão
+- [Link](https://forms.gle/Szy1GqnStrzqzPwE9)
+## Links
+- [Documentação weatherapi](https://www.weatherapi.com/docs/)
+- [Documentação Vue](https://vuejs.org/guide/introduction.html)
+- [Axios no Vue](https://www.devmedia.com.br/consumindo-uma-api-com-vue-js-e-axios/42974)
+- [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
