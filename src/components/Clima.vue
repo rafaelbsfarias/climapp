@@ -7,24 +7,20 @@
           <p class="clima__titulo__descricao">Previsões climáticas</p>
         </div>
         <div class="clima__pesquisa">
-          <input
-            class="clima__pesquisa-input"
-            ref="inputPesquisa"
-            type="text"
-            v-model="localizacao"
-            @keyup.enter="getClima"
-            placeholder="Pesquisar localização"
-          />
-          <button
-            class="clima__pesquisa-botao"
-            @click="getClima"
-          >
+          <input class="clima__pesquisa-input" ref="inputPesquisa" type="text" v-model="localizacao"
+            @keyup.enter="getClima" placeholder="Pesquisar localização" />
+          <button class="clima__pesquisa-botao" @click="getClima">
             Pesquisar
           </button>
         </div>
       </header>
       <main class="clima__conteudo">
         <!-- Complete a estrutura -->
+        <div v-if="climaData">
+          <h2>{{ climaData.location.name }}</h2>
+          <p>Temperatura: {{ climaData.current.temp_c }}°C</p>
+          <p>Condição: {{ climaData.current.condition.text }}</p>
+        </div>
       </main>
     </div>
   </div>
@@ -42,7 +38,7 @@ export default {
     };
   },
   methods: {
-    getClima() {
+    async getClima() {
       if (this.localizacao === "") {
         this.$refs.inputPesquisa.focus();
         return;
@@ -55,9 +51,19 @@ export default {
 
       const API_URL = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&lang=pt&q=${formatarLocalizacao}`;
 
-        // Adicionar a chamada da API weatherapi.com
-        // Armazenar o resultado em climaData
-
+      // Adicionar a chamada da API weatherapi.com
+      // Armazenar o resultado em climaData
+      try {
+        const response = await fetch(API_URL);
+        if (response.ok) {
+          const data = await response.json();
+          this.climaData = data;
+        } else {
+          console.error("Erro na requisição:", response.status);
+        }
+      } catch (error) {
+        console.error("Erro na requisição:", error);
+      }
       console.log(API_URL);
     },
   },
@@ -81,6 +87,7 @@ export default {
   background-color: #f8f9fa;
   overflow: hidden;
 }
+
 .clima__componente {
   margin: 0 auto;
   display: flex;
